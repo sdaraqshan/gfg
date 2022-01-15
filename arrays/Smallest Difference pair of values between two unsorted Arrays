@@ -1,0 +1,94 @@
+Smallest Difference pair of values between two unsorted Arrays
+
+Given two arrays of integers, compute the pair of values (one value in each array) with the smallest (non-negative) difference. Return the difference.
+
+Input : A[] = {l, 3, 15, 11, 2}
+        B[] = {23, 127, 235, 19, 8} 
+Output : 3  
+That is, the pair (11, 8) 
+
+------------------------
+A simple solution is to Brute Force using two loops with Time Complexity O(n2).
+--------------------
+
+-------
+base case: chk if 2 nos are equal so that diff =0;
+-------------
+
+-------------  O(m log m + n log n) time to sort and O(m + n) time to find the minimum difference. Therefore, the overall runtime is O(m log m + n log n). ------------
+
+A better solution is to sort the arrays. Once the arrays are sorted, we can find the minimum difference by iterating through the arrays
+------------------
+// Java Code to find Smallest
+// Difference between two Arrays
+import java.util.*;
+
+class GFG
+{
+	
+	// function to calculate Small
+	// result between two arrays
+	static int findSmallestDifference(int A[], int B[],
+									int m, int n)
+	{
+		// Sort both arrays
+		// using sort function
+		Arrays.sort(A);
+		Arrays.sort(B);
+	
+		int one = 0, two = 0;
+		int first,second,current=0;
+	
+		// Initialize result as max value
+		int result = Integer.MAX_VALUE;
+	
+		Arrays.sort(A);
+		Arrays.sort(B);
+		
+		while(one<alen && two<blen)
+		{
+		    first=A[one];
+		    second=B[two];
+		    
+		    if(first<second)
+		    {
+		        current=second-first;
+		        one+=1;
+		    }
+		    else if(first>second)
+		    {
+		        current=first-second;
+		        two+=1;
+		    }
+		    else
+		    {
+		        return current; 
+		    }
+		    if(result>current)
+		        result=current;
+		}
+	    return result; 
+	}
+	
+	// Driver Code
+	public static void main(String[] args)
+	{
+		// Input given array A
+		int A[] = {1, 2, 11, 5};
+	
+		// Input given array B
+		int B[] = {4, 12, 19, 23, 127, 235};
+	
+	
+		// Calculate size of Both arrays
+		int m = A.length;
+		int n = B.length;
+	
+		// Call function to
+		// print smallest result
+		System.out.println(findSmallestDifference
+								(A, B, m, n));
+		
+	}
+}
+
