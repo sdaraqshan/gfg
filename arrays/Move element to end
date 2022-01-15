@@ -1,0 +1,72 @@
+AE.io
+
+Move element to end
+
+Initialize two pointers where the left pointer marks the start of the array and the other one that is right one marks the end of the array, respectively.
+Decrement the count of right pointer long as it points to K, and increment the left pointer as long as it doesn’t point to the integer m.
+When both pointers aren’t moving, swap their values in place.
+Repeat this process until the pointers pass each other.
+
+------------------
+Time complexity: O(N), where N is the length of the array.
+Space complexity: O(1)
+--------------------
+
+// Java program to move all values
+// equal to K to the end of the Array
+class GFG{
+
+// Function to move the element to the end
+static int[] moveElementToEnd(int []array,
+							int toMove)
+{
+	// Mark left pointer
+	int i = 0;
+
+	// Mark the right pointer
+	int j = array.length - 1;
+
+	// Iterate until left pointer
+	// crosses the right pointer
+	while (i < j)
+	{
+		while (i < j && array[j] == toMove)
+
+			// Decrement right pointer
+			j--;
+
+		if (array[i] == toMove)
+
+			// Swap the two elements
+			// in the array
+			swap(array, i, j);
+
+		// Increment left pointer
+		i++;
+	}
+
+	// Return the result
+	return array;
+}
+
+static int[] swap(int []arr, int i, int j)
+{
+	int temp = arr[i];
+	arr[i] = arr[j];
+	arr[j] = temp;
+	return arr;
+}
+
+// Driver code
+public static void main(String[] args)
+{
+	int []arr = { 1, 1, 3, 5, 6 };
+	int K = 1;
+	int []ans = moveElementToEnd(arr, K);
+
+	for(int i = 0; i < arr.length; i++)
+	System.out.print(ans[i] + " ");
+}
+}
+
+
