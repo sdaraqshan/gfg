@@ -1,0 +1,69 @@
+Peak element 
+
+An element is called a peak element if its value is not smaller than the value of its adjacent elements(if they exists).
+Given an array arr[] of size N, find the index of any one of its peak elements.
+Note: The generated output will always be 1 if the index that you return is correct. Otherwise output will be 0. 
+
+
+Example 1:
+
+Input:
+N = 3
+arr[] = {1,2,3}
+Output: 2
+Explanation: index 2 is 3.
+It is the peak element as it is 
+greater than its neighbour 2.
+
+--------------------------------------------------1----------------------- o(n)---------------
+public int peakElement(int[] arr,int n)
+    {
+        if(n==1)
+            return 0;
+        if(arr[0]>=arr[1])
+            return 0;
+        if(arr[n-1]>=arr[n-2])
+            return (n-1);
+       
+       
+       for(int i=1;i<n-1;i++)
+       {
+           if(arr[i]>arr[i-1] && arr[i]>arr[i+1])
+               return i;
+       }
+       return 0;
+   }
+   
+   -------------------------------------------------------  BINARY SEARCH  O(LOG N) -------------------------------------
+   
+   static int findPeakUtil(
+int arr[], int low, int high, int n)
+{
+int mid = low + (high - low) / 2;
+if ((mid == 0 || arr[mid - 1] <= arr[mid])
+&& (mid == n - 1 || arr[mid + 1] <= arr[mid]))
+return mid;
+
+// If middle element is not peak
+// and its left neighbor is
+// greater than it, then left half
+// must have a peak element
+else if (mid > 0 && arr[mid - 1] > arr[mid])
+return findPeakUtil(arr, low, (mid - 1), n);
+
+// If middle element is not peak
+// and its right neighbor
+// is greater than it, then right
+// half must have a peak
+// element
+else
+return findPeakUtil(
+arr, (mid + 1), high, n);
+}
+
+// A wrapper over recursive function
+// findPeakUtil()
+static int findPeak(int arr[], int n)
+{
+return findPeakUtil(arr, 0, n - 1, n);
+}
