@@ -48,14 +48,20 @@ We can apply methods for both sorted and unsorted. But for a sorted array, we ca
 If there are multiple queries on a single array
 We can use hashing to store frequencies of all elements. Then we can answer all queries in O(1) time.
 
- HashMap<Integer,Integer> hm=new HashMap<>();
-    
-        for(int i=0;i<A.length;i++)
+Map<Integer, Integer> mp = new HashMap<>();
+ 
+        // Traverse through array elements and
+        // count frequencies
+        for (int i = 0; i < A.length; i++)
         {
-            if(hm.containsKey(A[i]))
-                hm.put(A[i],hm.get(A[i]+1));
-            hm.put(A[i],1);
+            if (mp.containsKey(A[i]))
+                mp.put(A[i], mp.get(A[i]) + 1);
+            else
+                mp.put(A[i], 1);
         }
-        if(hm.containsKey(x))
-            return hm.get(x);
-        
+        // Traverse through map and print frequencies
+        for (Map.Entry<Integer, Integer> entry : mp.entrySet())
+        {
+            return entry.getValue();
+        }
+        return 0;
