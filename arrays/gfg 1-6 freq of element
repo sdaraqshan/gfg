@@ -1,0 +1,61 @@
+Given a vector of N positive integers and an integer X. The task is to find the frequency of X in vector.
+Input:
+N = 5
+vector = {1, 1, 1, 1, 1}
+X = 1
+Output: 
+5
+Explanation: Frequency of 1 is 5.
+
+------------------------------- Time Complexity : O(n) 
+Auxiliary Space : O(1)
+
+// Java program to count
+// occurrences of an
+// element in an unsorted
+// array
+
+import java.io.*;
+
+class GFG {
+	
+	static int frequency(int a[],
+	int n, int x)
+	{
+		int count = 0;
+		for (int i=0; i < n; i++)
+		if (a[i] == x)
+			count++;
+		return count;
+	}
+	
+	// Driver program
+	public static void main (String[]
+	args) {
+		
+		int a[] = {0, 5, 5, 5, 4};
+		int x = 5;
+		int n = a.length;
+		
+		System.out.println(frequency(a, n, x));
+	}
+}
+
+---------------------------------------------
+If array is sorted
+We can apply methods for both sorted and unsorted. But for a sorted array, we can optimize it to work in O(Log n) time using Binary Search.
+
+If there are multiple queries on a single array
+We can use hashing to store frequencies of all elements. Then we can answer all queries in O(1) time.
+
+ HashMap<Integer,Integer> hm=new HashMap<>();
+    
+        for(int i=0;i<A.length;i++)
+        {
+            if(hm.containsKey(A[i]))
+                hm.put(A[i],hm.get(A[i]+1));
+            hm.put(A[i],1);
+        }
+        if(hm.containsKey(x))
+            return hm.get(x);
+        
