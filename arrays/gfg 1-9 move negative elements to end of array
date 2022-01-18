@@ -1,0 +1,45 @@
+ move negative elements to end of array
+ 
+ int temp[] = new int[n];
+
+        // Traversal array and store +ve element in
+        // temp array
+        int j = 0; // index of temp
+        
+        for (int i = 0; i < n; i++)
+            if (arr[i] >= 0)
+                temp[j++] = arr[i];
+
+        // If array contains all positive or all 
+        // negative.
+        if (j == n || j == 0)
+            return;
+
+        // Store -ve element in temp array
+        for (int i = 0; i < n; i++)
+            if (arr[i] < 0)
+                temp[j++] = arr[i];
+
+        // Copy contents of temp[] to arr[]
+        for (int i = 0; i < n; i++)
+            arr[i] = temp[i];
+            
+ -----------not working---------
+ // Queue<Integer> q1,q2;
+         Queue<Integer> q1 = new PriorityQueue<>();
+         Queue<Integer> q2 = new PriorityQueue<>();
+       for(int i=0;i<n;i++){
+           if(arr[i]<0)
+           q1.add(arr[i]);
+           else
+           q2.add(arr[i]);
+       }
+       int s = q2.size();
+       for(int i=0;i<s;i++){
+           arr[i]=q1.remove();
+        
+       }
+       for(int i=s;i<n;i++){
+           arr[i]=q1.remove();
+           
+       }
