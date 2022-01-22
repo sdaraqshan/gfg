@@ -1,0 +1,61 @@
+Reverse words in a given string
+Given a String S, reverse the string without reversing its individual words. Words are separated by dots.
+
+Example 1:
+
+Input:
+S = i.like.this.program.very.much
+Output: much.very.program.this.like.i
+Explanation: After reversing the whole
+string(not individual words), the input
+string becomes
+much.very.program.this.like.i
+
+---------------------------------------------
+String str="";
+        String res="";
+        for(int i=0;i<S.length();i++)
+        {
+            if(S.charAt(i)=='.')
+            {
+                str='.'+str;
+                res=str+res;
+                str="";
+            }
+            else
+                str+=S.charAt(i);
+        }
+        res=str+res;
+        return res;
+        
+        ------------------------------------------------------
+        STACK
+        ----
+Stack<Character>s=new Stack<>();
+       String res="";
+       int n=0;
+       for(int i=S.length()-1;i>=0;i--)
+       {
+           if(S.charAt(i)=='.')
+           {
+               n+=1;
+               while(!s.empty())
+               {
+                   res+=s.pop();
+               }
+               res+='.';
+           }
+           else
+           {
+               s.push(S.charAt(i));
+               n++;
+           }
+           if(n==S.length())
+           {
+               while(!s.empty())
+               {
+                   res+=s.pop();
+               }
+           }
+       }
+       return res;
