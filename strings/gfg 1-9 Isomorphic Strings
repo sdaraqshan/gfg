@@ -1,0 +1,47 @@
+Isomorphic Strings
+Given two strings 'str1' and 'str2', check if these two strings are isomorphic to each other.
+Two strings str1 and str2 are called isomorphic if there is a one to one mapping possible for every character of str1 to every character of str2 while preserving the order.
+Note: All occurrences of every character in ‘str1’ should map to the same character in ‘str2’
+
+Example 1:
+
+Input:
+str1 = aab
+str2 = xxy
+Output: 1
+Explanation: There are two different
+charactersin aab and xxy, i.e a and b
+with frequency 2and 1 respectively.
+-------------
+
+ 
+         char[] hash=new char[256]; 
+        int n1 = str1.length();
+        int n2 = str2.length();
+        
+        // Checking Base case 
+        if(n1 != n2){
+            return false;
+        }
+        
+        // checking str1 to str2 mapping
+        for(int i=0;i<n1;i++){
+            hash[str1.charAt(i)] = str2.charAt(i);
+        }
+        for(int i=0;i<n1;i++){
+            if(str2.charAt(i) != hash[str1.charAt(i)]){
+                return false;
+            }
+        }
+        
+        // checking str2 to str1 mapping
+        for(int i=0;i<n1;i++){
+            hash[str2.charAt(i)] = str1.charAt(i);
+        }
+        for(int i=0;i<n1;i++){
+            if(str1.charAt(i) != hash[str2.charAt(i)]){
+                return false;
+            }
+        }
+        
+        return true;
