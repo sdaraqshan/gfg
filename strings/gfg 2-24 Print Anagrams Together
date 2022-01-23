@@ -1,0 +1,33 @@
+Print Anagrams Together 
+Given an array of strings, return all groups of strings that are anagrams. The groups must be created in order of their appearance in the original array. Look at the sample case for clarification.
+
+
+Example 1:
+
+Input:
+N = 5
+words[] = {act,god,cat,dog,tac}
+Output:
+act cat tac 
+god dog
+Explanation:
+There are 2 groups of
+anagrams "god", "dog" make group 1.
+"act", "cat", "tac" make group 2.
+
+---------------------
+
+ Map<String,List<String>> m=new HashMap<>();
+       for(String s : string_list){
+           char a[]=s.toCharArray();
+           Arrays.sort(a);
+           String str=new String(a);
+           if(m.containsKey(str)){
+               m.get(str).add(s);
+           }
+           else{
+               m.put(str,new ArrayList<>());
+               m.get(str).add(s);
+           }
+       }
+       return new ArrayList<>(m.values());
