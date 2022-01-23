@@ -1,0 +1,27 @@
+Pangram Checking 
+Given a string check if it is Pangram or not. A pangram is a sentence containing every letter in the English Alphabet.
+
+Example 1:
+
+Input:
+S = Bawds jog, flick quartz, vex nymph
+Output: 1
+Explantion: In the given input, there
+are all the letters of the English
+alphabet. Hence, the output is 1.
+
+-----------
+
+
+     str=str.toUpperCase();
+        for(char i='A';i<='Z';i++)
+        {
+            if(!str.contains(String.valueOf(i)))
+            return false;
+        }
+        return true;
+        
+        ---------------
+        
+        hash map
+        ----------
