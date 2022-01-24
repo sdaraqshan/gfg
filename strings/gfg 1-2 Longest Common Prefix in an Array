@@ -24,6 +24,7 @@ Using Trie
 ------------------------------- n^2-------------
 
 int minlength = longestCommonPrefixPossible(arr,n);
+ if (arr.length == 0) return "";
        String result="";
        char current;
        for(int i=0;i<minlength;i++){
