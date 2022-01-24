@@ -23,3 +23,30 @@ class Solution{
 
 
 --------------sort arrays using stack and get kth smallest----------------
+
+You can use Binary heap, if u dont want to use fibonacci heap.
+
+Algo:
+
+Contruct the min binary heap from the array this operation will take O(n) time.
+
+Since this is a min binary heap, the element at the root is the minimum value.
+
+So keep on removing element frm root, till u get ur kth minimum value. o(1) operation
+
+Make sure after every remove you re-store the heap kO(logn) operation.
+
+So running time here is O(klogn) + O(n)............so it is O(klogn)...
+
+----------------------
+
+Two stacks can be used like this to locate the Nth smallest number in one pass.
+
+Start with empty Stack-A and Stack-B
+PUSH the first number into Stack-A
+The next number onwards, choose to PUSH into Stack-A only if the number is smaller than its top
+When you have to PUSH into Stack-A, run through these steps
+While TOP of Stack-A is larger than new number, POP TOP of Stack-A and push it into Stack-B
+When Stack-A goes empty or its TOP is smaller than new number, PUSH in the new number and restore the contents of Stack-B over it
+At this point you have inserted the new number to its correct (sorted) place in Stack-A and Stack-B is empty again
+If Stack-A depth is now sufficient you have reached the end of your search
