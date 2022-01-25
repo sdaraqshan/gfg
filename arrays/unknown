@@ -1,0 +1,20 @@
+ int sum = n*(n+1)/2;
+       for(int i =0;i<n-1;i++){
+           sum -= array[i];
+       }
+       return sum;
+       
+ --------------------------------------
+ 
+ const ExpectedSum = (n * (n+1))/2;
+       
+       let actualSum = 0;
+       for (let i =0; i< array.length; i++) {
+           actualSum = actualSum + array[i];
+       };
+       
+       return (ExpectedSum - actualSum)
+   }
+   -----------------------------------------
+   
+   
