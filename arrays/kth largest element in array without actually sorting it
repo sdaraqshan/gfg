@@ -1,0 +1,22 @@
+kth largest element in array without actually sorting it   
+
+We need to construct a max-heap of size N, and insert all elements of the array into it. 
+2. Then we pop the first k-1 elements from it. 
+3. Now, the kth largest element will be present at the root of the max-heap, just print the value of the root. 
+
+static int kthLargest(ArrayList < Integer > arr, int size, int K) 
+{  
+PriorityQueue < Integer > pq = new PriorityQueue < Integer > (Collections.reverseOrder()); 
+for (int i = 0; i < size; i++)
+{    
+  pq.add(arr.get(i)); 
+  }  
+  int l = K - 1; 
+  while (l > 0)
+  {   
+  pq.poll(); 
+  l = l - 1; 
+  } 
+  return pq.peek();
+  } 
+  
