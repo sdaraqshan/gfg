@@ -1,0 +1,33 @@
+import java.io.*; 
+
+interface In1 
+
+{ 
+
+    void display(); 
+
+} 
+
+public class Test implements In1 
+
+{ 
+
+    public void display() 
+
+    { 
+
+        System.out.println("hi"); 
+
+    } 
+
+    public static void main (String[] args) 
+
+    { 
+
+        Test t=new Test(); 
+
+        t.display(); 
+
+    } 
+
+} 
