@@ -1,19 +1,95 @@
-public class MyClass { 
+Extending the Thread class  
 
-   public static void main(String args[]){  
+Implementing the Runnable Interface 
 
- 	int a = 1;  
+class MultithreadingDemo extends Thread 
 
-		int b = 0;  
+{ 
 
-		try  
+    public void run() 
 
-		{   int i = a/b;   }  
+    { 
 
-		catch(ArithmeticException ex)  
+        try 
 
-		{    System.out.println("/ by 0 ");    }  
+        { 
 
-	}  
+           System.out.println("Thread " + Thread.currentThread().getId()+ " is running");} 
+
+        catch(Exception e) 
+
+            {System.out.println("Exception is caught");} 
+
+    } 
 
 } 
+
+  
+
+public class Multithread { 
+
+    public static void main(String[] args) 
+
+    { 
+
+        int n = 8; // Number of threads 
+
+        for (int i = 0; i < n; i++) { 
+
+            MultithreadingDemo object= new MultithreadingDemo(); 
+
+            object.start(); 
+
+        } 
+
+    } 
+
+} 
+
+Runnable 
+
+class MultithreadingDemo implements Runnable { 
+
+public void run() 
+
+{ 
+
+try { 
+
+// Displaying the thread that is running 
+
+System.out.println( 
+
+"Thread " + Thread.currentThread().getId() 
+
++ " is running"); 
+
+} 
+
+catch (Exception e) { 
+
+// Throwing an exception 
+
+System.out.println("Exception is caught"); 
+
+}  }  } 
+
+// Main Class 
+
+class Multithread { 
+
+public static void main(String[] args) 
+
+{ 
+
+int n = 8; // Number of threads 
+
+for (int i = 0; i < n; i++) { 
+
+Thread object 
+
+= new Thread(new MultithreadingDemo()); 
+
+object.start(); 
+
+}  }  } 
